@@ -2,9 +2,6 @@ name: Deploy RKE2 & Big Bang
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'config.json'
 
 jobs:
   deploy-rke2:
