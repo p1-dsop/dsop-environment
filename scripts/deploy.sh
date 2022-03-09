@@ -24,6 +24,7 @@ echo -e "\n\e[34m╔════════════════════
 ║   \e[35mBigBang Automated Deployer v0.2 🚀\e[34m   ║
 ╚════════════════════════════════════════╝\e[39m"
 
+kubectl version
 kubectl version > /dev/null 2>&1 || { echo -e "💥 Error! kubectl is not pointing at a cluster, configure KUBECONFIG or $HOME/.kube/config"; exit 1; }
 
 echo 
@@ -133,10 +134,11 @@ kubectl delete netpol -n flux-system allow-scraping
 echo -e "\n\e[36m###\e[33m 💣 Deploying BigBang!\e[39m"
 pushd $scriptPath/../dev
 kubectl apply -f bigbang.yaml
-popd
 
-echo -e "\n\e[36m###\e[33m 💤 Sleeping for a few seconds...\e[39m"
-sleep 15
+## Remove verification step - run Pytest instead
 
-echo -e "\n\e[36m###\e[33m 👀 Verifying gitrepositories & kustomizations\e[39m"
-kubectl get -n $NAMESPACE gitrepositories,kustomizations -A
+# echo -e "\n\e[36m###\e[33m 💤 Sleeping for a few seconds...\e[39m"
+# sleep 60
+
+# echo -e "\n\e[36m###\e[33m 👀 Verifying gitrepositories & kustomizations\e[39m"
+# kubectl get -n $NAMESPACE gitrepositories,kustomizations -A

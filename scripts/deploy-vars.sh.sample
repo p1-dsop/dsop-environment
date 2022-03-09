@@ -1,6 +1,6 @@
 export DEPLOY_AKS="false"
 export DEPLOY_FLUX="true"
-export USE_KEYVAULT_CERT="false"
+export USE_KEYVAULT_CERT="true"
 
 # Only used when DEPLOY_AKS is true
 export AZURE_REGION="uksouth"
